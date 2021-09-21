@@ -4,7 +4,8 @@
   "description": "Đồ án nhóm",
   "main": "src/index.js",
   "scripts": {
-    "beautiful" : "prettier --single-quote --trailing-comma all --write 'src/**/*.{js, json, scss, hbs}'",
+    "pre-commit": "lint-staged",
+    "beautiful" :"prettier --single-quote --trailing-comma all --tab-width 4 -w \"src/**/*.{js, json, scss}\"",
     "start": "nodemon --inspect src/index.js",
     "watch": "node-sass --watch src/resources/scss/ -o src/public/css/",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,6 +20,9 @@
     "url": "https://github.com/ngoquochieu/clothing-store/issues"
   },
   "homepage": "https://github.com/ngoquochieu/clothing-store#readme",
+  "lint-staged ": {
+    "src/**/*.{js, json, scss}": "prettier --single-quote --trailing-comma all --tab-width 4 -w"
+  },
   "dependencies": {
     "express": "^4.17.1",
     "express-handlebars": "^5.3.3",

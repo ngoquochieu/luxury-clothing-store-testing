@@ -4,9 +4,9 @@ async function connect() {
     try {
         await mongoose.connect('mongodb://localhost:27017/clothing_store_dev');
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
-    console.log("Successful !!!");
-  }
+    console.log('Successful !!!');
+}
 
-module.exports = {connect};
+module.exports = { connect };
