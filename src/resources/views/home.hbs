@@ -10,7 +10,7 @@
                         </p>
                     </div>   
                 </div>
-                <div class="container-img ">
+                <div class="container-img plr-16">
                     <img src="/img/jeans.jpg" alt="Jeans" class="full-width">
                     <div class="img-content">
                         <h1 class="img-content-1 font-64 text-white margin-t-b">New arrivals</h1>
@@ -19,6 +19,31 @@
                             <a href="#" class="font-18 text-white upper-text none-decoration img-btn-sn">shop now</a>
                         </p>
                     </div>
+                </div>       
+                <div class="quantity-items mtb-15 plr-16">
+                    {{#with items}}
+                        <p>{{this.length}} items</p>
+                    {{/with}}
+                </div>     
+                <div class="container-list-items">
+                    <div class="row">
+                    {{#each items}}
+                        <div class="col col-third">
+                            <div class="item plr-16">
+                                <div class="item-img">
+                                    <img src="{{this.img}}" alt="ERR" width="100%">
+                                </div>
+                                <div class="item-content">
+                                    <p>{{this.name}}</p>
+                                    <p>{{this.price}}.00</p>
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}   
+                        
+                    
+                    </div>
                 </div>
-            </div>      
+            </div> 
+                 
         </div>   
