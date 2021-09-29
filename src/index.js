@@ -9,8 +9,9 @@ const port = 3000;
 //Connect db
 db.connect();
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.static(path.join(__dirname, 'util')));
+app.use (express.urlencoded({ extended: true }));
 app.set('views', path.join(__dirname, 'resources/views'));
 //Set engine
 app.engine(

@@ -8,4 +8,4 @@ const Categories = new Schema({
     items: Array,
 });
 
-module.exports = mongoose.model('Categorise', Categorise);
+module.exports = mongoose.model('Categories', Categories);
