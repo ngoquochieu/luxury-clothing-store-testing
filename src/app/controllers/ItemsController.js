@@ -16,6 +16,10 @@ class ItemsController {
             })})
             .catch(next);
     }
+    //[POST] /items/:type/details
+    detailsItems() {
+
+    }
 }
 
 module.exports = new ItemsController();

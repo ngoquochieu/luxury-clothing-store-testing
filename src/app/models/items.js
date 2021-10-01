@@ -15,6 +15,13 @@ const Items = new Schema({
             img_detail: Array,
             size: Array,
             color: String,
+            product_code: String,
+            brand : String,
+            size_fit: {
+                model_wears: String,
+                model_height: String,
+            },
+            about: Array,
         },
     ],
     status: Boolean,
