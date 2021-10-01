@@ -4,8 +4,8 @@ const Cates = require('../models/categories');
 const {multipleMongooseToObject} = require('../../util/mongoose');
 const {mongooseToObject} = require('../../util/mongoose');
 class ItemsController {
+    //[GET] items/:type/
      showItemsOfCate (req, res, next) { 
-        // Items.find({type: {$elemMatch : {'detail.color' :'GREEN' }}})
         Items.find({type: [req.params.type]})
             .then(items => {res.render('home', {
                 title: 'Home page',
