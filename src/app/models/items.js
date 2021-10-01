@@ -5,6 +5,7 @@ const ObjectId = Schema.ObjectId;
 const Items = new Schema({
     _id: ObjectId,
     name: String,
+    type: Array,
     price: Number,
     img: String,
     description: String,
