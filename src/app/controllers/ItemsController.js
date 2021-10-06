@@ -17,8 +17,8 @@ class ItemsController {
             .catch(next);
     }
     //[POST] /items/:type/details
-    detailsItems() {
-
+    detailsItems(req, res, next) {
+        res.render('details_items');
     }
 }
 

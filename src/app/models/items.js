@@ -9,8 +9,7 @@ const Items = new Schema({
     price: Number,
     img: String,
     description: String,
-    detail: [
-        {
+    details: {
             quantity: Number,
             img_detail: Array,
             size: Array,
@@ -21,9 +20,8 @@ const Items = new Schema({
                 model_wears: String,
                 model_height: String,
             },
-            about: Array,
-        },
-    ],
+            about: Array,  
+    },
     status: Boolean,
     createAt: { type: Date, default: Date.now },
     updateAt: { type: Date, default: Date.now },

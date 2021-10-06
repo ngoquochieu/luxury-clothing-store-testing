@@ -1,15 +1,6 @@
         <div id="container">
             {{> nav}}
             <div id="container-left">
-                <div class="container-header full-width">
-                    <div class="content-header-left full-width">
-                        <p class="f-left">Jeans</p>
-                        <p class="f-right">
-                            <i class="fas fa-cart-plus"></i>
-                            <i class="fas fa-search"></i>
-                        </p>
-                    </div>   
-                </div>
                 <div class="container-img plr-16">
                     <img src="/img/jeans.jpg" alt="Jeans" class="full-width">
                     <div class="img-content">
@@ -29,15 +20,17 @@
                     <div class="row">
                     {{#each items}}
                         <div class="col col-third">
-                            <div class="item plr-16">
-                                <div class="item-img">
-                                    <img src="{{this.img}}" alt="ERR" width="100%">
+                            <a href="/items/shirts/details/{{this.details.product_code}}" class="add-to-cart">
+                                <div class="item plr-16">
+                                    <div class="item-img">
+                                        <img src="{{this.img}}" alt="ERR" width="100%">
+                                    </div>
+                                    <div class="item-content">
+                                        <p>{{this.name}}</p>
+                                        <p>{{this.price}}.00</p>
+                                    </div>
                                 </div>
-                                <div class="item-content">
-                                    <p>{{this.name}}</p>
-                                    <p>{{this.price}}.00</p>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                     {{/each}}   
                         
