@@ -90,3 +90,9 @@ html {
 #container-left .quantity-items {
   font-size: 15px;
   line-height: 22px; }
+
+.item .item-img {
+  margin-bottom: 10px; }
+
+.item .item-content {
+  margin-bottom: 30px; }

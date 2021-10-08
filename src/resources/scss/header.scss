@@ -19,6 +19,11 @@
     text-decoration: none;
 }
   /*Common*/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 #header {
       background-color: #474747;
       margin-bottom: 20px;
