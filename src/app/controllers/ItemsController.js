@@ -16,9 +16,15 @@ class ItemsController {
             })})
             .catch(next);
     }
-    //[POST] /items/:type/details
+    //[GET] /items/:type/details/:product_code
     detailsItems(req, res, next) {
-        res.render('details_items');
+        Items.findOne({product: req.params.product_code})
+            .then(item => {res.render('details_items', {
+                style:'/css/details.css',
+                item:mongooseToObject(item),
+                script: '/details.js'
+            })})
+            .catch(next);
     }
 }
 
