@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "pre-commit": "lint-staged",
-    "beautiful" :"prettier --single-quote --trailing-comma all --tab-width 4 -w \"src/**/*.{js, json, scss, hbs}\"",
+    "beautiful": "prettier --single-quote --trailing-comma all --tab-width 4 -w \"src/**/*.{js, json, scss, hbs}\"",
     "start": "nodemon --inspect src/index.js",
     "watch": "node-sass --watch src/resources/scss/ -o src/public/css/",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -24,8 +24,14 @@
     "src/**/*.{js, json, scss}": "prettier --single-quote --trailing-comma all --tab-width 4 -w"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "connect-mongodb-session": "^3.1.1",
+    "cookie-parser": "^1.4.5",
+    "cookie-session": "^1.4.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.3.3",
+    "express-session": "^1.17.2",
     "husky": "^7.0.2",
     "lint-staged": "^11.1.2",
     "mongoose": "^6.0.5",
