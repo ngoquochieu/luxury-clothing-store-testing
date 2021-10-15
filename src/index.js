@@ -1,5 +1,8 @@
 const express = require('express');
 const handlebars = require('express-handlebars');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const MongoDBStore = require('connect-mongodb-session')(session);
 const path = require('path');
 const route = require('./routers');
 const app = express();
@@ -8,10 +11,29 @@ const port = 3000;
 
 //Connect db
 db.connect();
-
+app.use(express.json());
+app.use(
+    express.urlencoded({
+        extended: true,
+    }),
+);
+var store = new MongoDBStore({
+    uri: 'mongodb://localhost:27017/clothing_store_dev',
+    collection: 'mySessions'
+  });
+app.use(session({
+    // cookie: {
+    //     userPhone:'456456',
+    //     password: '456456',
+    // },
+    secret:'Quoc Hieu',
+    resave:false,
+    saveUninitialized:false,
+    store: store,
+}))
+// app.use(bcrypt());
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.static(path.join(__dirname, 'util')));
-app.use (express.urlencoded({ extended: true }));
 app.set('views', path.join(__dirname, 'resources/views'));
 //Set engine
 app.engine(
@@ -28,9 +50,7 @@ app.engine(
         },
     }),
 );
-
 app.set('view engine', 'hbs');
-
 route(app);
 
 app.listen(port, () => {
