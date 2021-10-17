@@ -5,7 +5,7 @@ const { multipleMongooseToObject } = require('../../util/mongoose');
 const { mongooseToObject } = require('../../util/mongoose');
 class HomeController {
     index(req, res, next) {
-        req.session.isAuth = true;
+        // req.session.isAuth = true;
         Items.find()
             .then((items) => {
                 res.render('home', {
