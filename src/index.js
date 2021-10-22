@@ -17,15 +17,15 @@ app.use(
         extended: true,
     }),
 );
+// Cookie-parser
+app.use(cookieParser());
+
 var store = new MongoDBStore({
     uri: 'mongodb://localhost:27017/clothing_store_dev',
     collection: 'mySessions'
   });
+// Session
 app.use(session({
-    // cookie: {
-    //     userPhone:'456456',
-    //     password: '456456',
-    // },
     secret:'Quoc Hieu',
     resave:false,
     saveUninitialized:false,
