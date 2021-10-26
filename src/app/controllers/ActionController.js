@@ -4,16 +4,10 @@ class ActionController {
     //[GET] '/action/login
     action(req, res, next) {
         res.render('login', {
-            // layout:false,
             style: '/css/login.css',
             script: '/login.js',
         });
     }
-    //[GET] /action/logout
-    logoutPage(req, res, next) {
-        res.render('logout')
-    }
-
     //[POST] '/action/login'
     async login(req, res, next) {
         const {userPhone, password, fullname, address, date_of_birth, img} = req.body;
@@ -26,9 +20,10 @@ class ActionController {
             return res.redirect('/action/login');
         }
         res.cookie('user', user);
-        // console.log(req)
         req.session.isAuth = true;
-        res.redirect('/action/logout');
+        // const {cookies} = req;
+        // console.log(req.cookies.user);
+        res.redirect('/');
     }
 
     //[POST] /action/signup

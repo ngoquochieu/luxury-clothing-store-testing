@@ -5,7 +5,6 @@ const validateCookie = require('../app/middleware/ValidateCookie');
 const author = require('../app/middleware/Author')
 
 router.get('/login', actionController.action);
-router.get('/logout',author, actionController.logoutPage)
 router.post('/login', actionController.login);
 router.post('/signup', actionController.signup);
 router.post('/logout', actionController.logout);
