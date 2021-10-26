@@ -13,6 +13,9 @@ class ItemsController {
                     style: '/css/home.css',
                     script: 'home.js',
                     nav: '/css/nav.css',
+                    header_css:'/css/header.css',
+                    header_js:'header.js',
+                    user: req.cookies.user,
                     items: multipleMongooseToObject(items),
                 });
             })
@@ -26,6 +29,9 @@ class ItemsController {
                     style: '/css/details.css',
                     item: mongooseToObject(item),
                     script: '/details.js',
+                    header_css:'/css/header.css',
+                    header_js:'header.js',
+                    user: req.cookies.user,
                 });
             })
             .catch(next);

@@ -11,7 +11,8 @@
         </form>  
         <div class="icon">
             <ul class="icon-selection">
-                <li id="user">
+            {{#if user}}
+                <li id="user_1">            
                     <div class="action">
                         <div class="profile">
                             <img  id="user-img">
@@ -29,12 +30,21 @@
                         </div>
                     </div>
                 </li>
-                <li><a href=""><i class="far fa-heart"></i></a></li>
-                <li><a href=""><i class="fas fa-shopping-bag"></i></a></li>
+            {{else}}
+            <li id="user_2">
+                <a href="javascript:void()" id="js-login">
+                    <img src="/img/user/user.png" alt="Sign in">
+                   <scan>SIGN IN</scan>
+                </a>
+            </li>         
+            {{/if}}
+                <li><a href="javascript:void()"><i class="far fa-heart"></i></a></li>
+                <li><a href="javascript:void()"><i class="fas fa-shopping-bag"></i></a></li>
             </ul>
         </div>
         </div>      
     </div>
 </div>
 <form action="/user/profile" method="GET" id="profile-form"></form>
+<form action="/action/login" method="GET" id="login-form"></form>
 <form action="/action/logout" method="POST" id="logout-form"></form>
