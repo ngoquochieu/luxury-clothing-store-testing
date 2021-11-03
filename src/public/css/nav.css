@@ -24,7 +24,8 @@
   position: fixed;
   top: 0;
   bottom: 0;
-  overflow: auto; }
+  overflow: auto;
+  padding-top: 64px; }
 
 #sidebar .sidebar-logo {
   font-family: 'Roboto', sans-serif;
@@ -38,7 +39,7 @@
   margin: 10px 0; }
 
 .sidebar-cates {
-  padding: 64px 0; }
+  padding-bottom: 64px; }
 
 .cates-list li a {
   display: block;

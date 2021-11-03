@@ -14,7 +14,7 @@ class HomeController {
                     script: 'home.js',
                     nav: '/css/nav.css',
                     header_css:'/css/header.css',
-                    header_js:'header.js',
+                    header_js:'/header.js',
                     user: req.cookies.user,
                     items: multipleMongooseToObject(items),
                 });

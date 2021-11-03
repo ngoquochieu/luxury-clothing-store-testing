@@ -32,8 +32,7 @@
     top: 0;
     bottom: 0;
     overflow: auto;
-    // z-index: 3;
-
+    padding-top: 64px;
 }
 
 #sidebar .sidebar-logo {
@@ -51,7 +50,7 @@
 }
 
 .sidebar-cates {
-    padding: 64px 0;
+    padding-bottom: 64px;
 }
 .cates-list li a {
     display: block;

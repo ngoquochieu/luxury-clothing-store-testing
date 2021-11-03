@@ -14,7 +14,7 @@ class ItemsController {
                     script: 'home.js',
                     nav: '/css/nav.css',
                     header_css:'/css/header.css',
-                    header_js:'header.js',
+                    header_js:'/header.js',
                     user: req.cookies.user,
                     items: multipleMongooseToObject(items),
                 });
@@ -23,14 +23,15 @@ class ItemsController {
     }
     //[GET] /items/:type/details/:product_code
     detailsItems(req, res, next) {
-        Items.findOne({ product: req.params.product_code })
+        // res.send(req.params.product_code);
+        Items.findOne({'details.product_code': req.params.product_code })
             .then((item) => {
                 res.render('details_items', {
                     style: '/css/details.css',
                     item: mongooseToObject(item),
                     script: '/details.js',
                     header_css:'/css/header.css',
-                    header_js:'header.js',
+                    header_js:'/header.js',
                     user: req.cookies.user,
                 });
             })
