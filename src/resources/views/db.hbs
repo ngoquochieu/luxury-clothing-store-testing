@@ -1,0 +1,180 @@
+{{!-- This is dashboard page --}}
+        <div id="dashboard">
+            <div id="sidebar">
+                <div class="sidebar-brand">
+                    <h2><span class="las la-igloo"></span>LCS</h2>
+                </div>
+                <div class="sidebar-menu">
+                    <ul>
+                        {{!-- <li>
+                            <a href="" class="active"><span class="las la-igloo"></span>
+                            <span>Dashboard</span></a>                     
+                        </li> --}}
+                        <li>
+                            <a href="/admin/user" class="active"><span class="las la-users"></span>
+                            <span>Customers</span></a>
+                        </li>
+                        <li>
+                            <a href="/admin/staff"><span class="las la-user-tie"></span>
+                            <span>Staffs</span></a>
+                        </li>
+                        <li>
+                            <a href="/admin/products"><span class="lab la-product-hunt"></span>
+                            <span>Products</span></a>
+                        </li>
+                        <li>
+                            <a href="/admin/profile"><span class="las la-user-circle"></span>
+                            <span>Profile</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="main-content">
+                <header>
+                    <h1>
+                        <label for="">
+                            <span class="las la-bars bars-js"></span>
+                        </label>
+                        Dashboard 
+                    </h1>
+                    <div class="search-wrapper">
+                        <span class="las la-search"></span>
+                        <input type="search" placeholder="Search here">
+                    </div>
+                    <div class="user-wrapper">
+                    {{#with admin}}
+                        <img src="{{this.img}}" alt="" width="40px" height="40px">
+                        <div>
+                            <h4>{{this.username}}</h4>
+                            <small>Super Admin</small>
+                        </div>
+                    {{/with}}
+                    </div>      
+                </header>
+                <main>
+                    <div class="cards">
+                        <div class="cards-single">
+                            <div>
+                                <h1>54</h1>
+                                <span>Customer</span>
+                            </div>
+                            <div>
+                                <span class="las la-users"></span>
+                            </div>
+                        </div>
+
+                        <div class="cards-single">
+                            <div>
+                                <h1>79</h1>
+                                <span>Staff</span>
+                            </div>
+                            <div>
+                                <span class="las la-user-tie"></span>
+                            </div>
+                        </div>
+
+                        <div class="cards-single">
+                            <div>
+                                <h1>124</h1>
+                                <span>Orders</span>
+                            </div>
+                            <div>
+                                <span class="las la-shopping-bag"></span>
+                            </div>
+                        </div>
+
+                        <div class="cards-single">
+                            <div>
+                                <h1>$6k</h1>
+                                <span>Income</span>
+                            </div>
+                            <div>
+                                <span class="lab la-google-wallet"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recent-grid">
+                        <div class="projects">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h2>Customers</h2>
+                                    <button>See all <span class="las-la-arrow-right"></span></button>
+                                </div>
+                                <div class="card-body">
+                                    <table width="100%">
+                                    {{#if users}}
+                                        <thead>
+                                            <tr>
+                                                <td>#</td>
+                                                <td>Full Name</td>
+                                                <td>User Phone</td>
+                                                <td>Address</td>
+                                                <td>Date of birth</td>
+                                                <td>adsas</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {{#each users}}
+                                            <tr>
+                                                <td>{{sum @index 1}}</td>
+                                                <td>{{this.fullname}}</td>
+                                                <td>{{this.userPhone}}</td>
+                                                <td>{{this.address}}</td>
+                                                <td>{{this.date_of_birth}}</td>
+                                                {{!-- <td>{{this.date}}</td> --}}
+                                                {{!-- <td>{{this.updatedAt}}</td> --}}
+                                                {{!-- <td>
+                                                    <div class="status green"></div>
+                                                    in process
+                                                </td> --}}
+                                                <td class="user-action">
+                                                    <ul>
+                                                        <li><a href="/admin/user/edit/{{this._id}}"><i class="las la-user-edit"></i></a></li>
+                                                        <li><a href=""><i class="las la-trash"></i></a></li>
+                                                        <li><a href=""><i class="las la-save"></i></a></li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        {{/each}}
+                                        </tbody>
+                                    {{else}}
+                                        <thead>
+                                            <td>#</td>
+                                            <td>Product code</td>
+                                            <td>Price</td>
+                                            <td>Color</td>
+                                            <td>Quantity</td>
+                                            <td>Status</td>
+                                            <td>Action</td>
+                                        </thead>
+                                        <tbody>
+                                        {{#each items}}
+                                            <tr>
+                                                <td>{{sum @index 1}}</td>
+                                                <td>{{this.details.product_code}}</td>
+                                                <td>{{this.price}}</td>
+                                                <td>{{this.details.color}}</td>
+                                                <td>{{this.details.quantity}}</td>
+                                                <td>{{this.status}}</td>
+                                                <td class="user-action">
+                                                    <ul>
+                                                        <li><a href="/admin/products/edit/{{this.details.product_code}}"><i class="las la-user-edit"></i></a></li>
+                                                        <li><a href=""><i class="las la-trash"></i></a></li>
+                                                        <li><a href=""><i class="las la-save"></i></a></li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        {{/each}}
+                                        </tbody>
+                                    {{/if}}
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="customers">
+
+                        </div>
+                    </div>
+                </main>
+            </div>   
+        </div>
