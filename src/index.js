@@ -1,5 +1,6 @@
 const express = require('express');
 const handlebars = require('express-handlebars');
+const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
@@ -19,6 +20,7 @@ app.use(
 );
 // Cookie-parser
 app.use(cookieParser());
+app.use(methodOverride('_method'));
 
 var store = new MongoDBStore({
     uri: 'mongodb://localhost:27017/clothing_store_dev',
@@ -40,14 +42,13 @@ app.engine(
     'hbs',
     handlebars({
         defaultLayout: 'main',
+        layoutsDir: path.join(__dirname, 'resources/views/layouts'),
+        partialsDir: path.join(__dirname,'resources/views/partials'),
+        // partialsDir: path.join(__dirname,'resources/views/management'),
         extname: '.hbs',
         helpers: {
-            section: function (name, options) {
-                if (!this._sections) this._sections = {};
-                this._sections[name] = options.fn(this);
-                return null;
-            },
-        },
+            sum: (a, b) => a + b,
+        }
     }),
 );
 app.set('view engine', 'hbs');
