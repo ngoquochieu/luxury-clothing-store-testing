@@ -18,6 +18,7 @@ app.use(
         extended: true,
     }),
 );
+
 // Cookie-parser
 app.use(cookieParser());
 app.use(methodOverride('_method'));
