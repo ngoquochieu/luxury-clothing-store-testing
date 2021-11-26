@@ -1,15 +1,21 @@
-    const profile = document.querySelector('.action .profile');
-    const toggleMenu = document.querySelector('.menu');
-    const js_login = document.querySelector('#js-login');
-    const login_form = document.querySelector('#login-form');
-    const js_logout = document.querySelector('#js-logout');
-    const logout_form = document.querySelector('#logout-form');
-    const menu = document.querySelector('.menu');
-    const icon_selection = document.querySelector('.icon-selection');
-    const user_img = document.querySelector('#user-img');
-    const user_name = document.querySelector('#user-name');
-    const profile_form = document.querySelector('#profile-form');
-    const js_my_profile = document.querySelector('#js-my-profile');
+function find(cssQuery) {
+    return document.querySelector(cssQuery);
+}
+//  Preferred
+const 
+    profile = find('.action .profile'),
+    toggleMenu = find('.menu'),
+    js_login = find('#js-login'),
+    login_form = find('#login-form'),
+    js_logout = find('#js-logout'),
+    logout_form = find('#logout-form'),
+    menu = find('.menu'),
+    icon_selection = find('.icon-selection'),
+    user_img = find('#user-img'),
+    user_name = find('#user-name'),
+    profile_form = find('#profile-form'),
+    js_my_profile = find('#js-my-profile');
+    
     if(js_login) {
         icon_selection.addEventListener('click', (event) => {
             if (event.target.nodeName != 'A') return;

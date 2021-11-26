@@ -41,6 +41,7 @@ class ActionController {
             address: 'Blalala',
             date_of_birth:'04/06/2001',
             img:'/img/user/test.jpg',
+            role:'user',
         })
         await user.save();
         res.redirect('/action/login');

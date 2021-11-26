@@ -1,15 +1,21 @@
-const loginText = document.querySelector('.title-text .login');
-const loginForm = document.querySelector('form.login');
-const loginBtn = document.querySelector('label.login');
-const signupBtn = document.querySelector('label.signup');
-const signupLink = document.querySelector('form .signup-link a');
+function find(cssQuery) {
+    return document.querySelector(cssQuery);
+}
+const 
+    loginText = find('.title-text .login'),
+    loginForm = find('form.login'),
+    loginBtn = find('label.login'),
+    signupBtn = find('label.signup'),
+    signupLink = find('form .signup-link a');
+
+const styles = [ loginForm.style, loginText.style]
 signupBtn.onclick = () => {
-    loginForm.style.marginLeft = '-50%';
-    loginText.style.marginLeft = '-50%';
+    for(const style of styles)
+        style.marginLeft = `-50%`;
 };
 loginBtn.onclick = () => {
-    loginForm.style.marginLeft = '0%';
-    loginText.style.marginLeft = '0%';
+    for(const style of styles)
+        style.marginLeft = `0%`;
 };
 signupLink.onclick = () => {
     signupBtn.click();
