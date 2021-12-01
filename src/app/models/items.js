@@ -11,7 +11,7 @@ const Items = new Schema({
     description: String,
     details: {
         quantity: Number,
-        img_detail: Array,
+        img_details: Array,
         size: Array,
         color: String,
         product_code: String,
