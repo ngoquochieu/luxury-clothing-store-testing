@@ -33,10 +33,14 @@ header label span {
 .search-wrapper span {
   display: inline-block;
   padding: 0rem 1rem;
-  font-size: 1.5rem; }
+  font-size: 1.5rem;
+  background: #fff;
+  height: 100%;
+  line-height: 50px; }
 
 .search-wrapper input {
   height: 100px;
+  width: 100%;
   padding: .5rem;
   border: none;
   outline: none; }
@@ -101,8 +105,10 @@ main {
 
 .card-header,
 .card-body {
-  padding: 1rem;
   text-align: center; }
+
+.card-body {
+  margin: -1rem -1rem; }
 
 .card-header {
   display: flex;
@@ -121,9 +127,15 @@ thead td {
   font-weight: 700; }
 
 td {
-  padding: .5rem 1rem;
+  padding: .5rem .5rem;
   font-size: .9rem;
   color: #222; }
+
+td > img {
+  height: 50px;
+  width: 40px;
+  object-fit: cover;
+  border-radius: 25%; }
 
 td .status {
   display: inline-block;
@@ -135,9 +147,13 @@ td .status {
 .status.green {
   background: green; }
 
+.status.red {
+  background: red; }
+
 .user-action ul {
   display: flex;
-  justify-content: center; }
+  justify-content: center;
+  margin-top: 1rem; }
 
 .user-action ul li {
   margin: 0px 5px;

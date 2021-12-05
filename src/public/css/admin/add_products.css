@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+form {
+  left: 260px; }
+
+#add-products {
+  display: flex;
+  padding: 0 1rem;
+  justify-content: space-between; }
+
+.content {
+  align-self: flex-start;
+  height: 500px; }
+
+.main-content-products {
+  width: 400px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 50px 0px; }
+
+.main-content-products div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly; }
+
+.main-content-products div label {
+  margin-bottom: 10px; }
+
+.main-content-products div input {
+  margin-bottom: 20px;
+  font-size: 16px; }
+
+.btn-add {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 50px; }
