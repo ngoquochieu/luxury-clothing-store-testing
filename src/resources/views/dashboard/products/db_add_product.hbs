@@ -1,0 +1,105 @@
+{{> admin/db_sidebar}}
+<div class="main-content">
+    {{> admin/db_header}}
+    <main style="background-color: #f1f5f9;">
+        <form action="/admin/products/add" enctype="multipart/form-data" class="form-add"  method="POST">
+            <div id="add-products">
+                <div class="content">
+                    <div class="main-content-products">
+                        <div>
+                            <label for="">Name: </label>
+                            <input type="text" name="name" id="name" value="" placeholder="">
+                        </div>
+                        <div>
+                            <label for="sizes">Type:</label>
+                            <select name="type" id="type" class="full-width" required>
+                                <option value="" disabled selected> Please select type</option>
+                                <option value="shirts">Shirts</option>
+                                <option value="dresses">Dresses</option>
+                                <option value="jeans">Jeans</option>
+                                <option value="jackets">Jackets</option>
+                                <option value="blazers">Blazers</option>
+                                <option value="shoes">Shoes</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="">Price: </label>
+                            <input type="text" name="price" id="price" value="">
+                        </div>
+                        <div>
+                            <label for="">Image: </label>
+                            <input class="form-control js-img" type="file" id="formFileMultiple" multiple name="products">    
+                        </div>
+                        <div>
+                            <label for="">Quantity: </label>
+                            <input type="number" name="quantity" id="quantity" value="">
+                        </div>
+                        <div>
+                            <label for="">Size: </label>
+                            <input type="text" name="size" id="size" value="" placeholder="S-M-L-XL...">
+                        </div>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="main-content-products">
+                        <div>
+                            <label for="">Brand: </label>
+                            <input type="text" name="brand" id="brand" value="" placeholder="">
+                        </div>
+                        <div>
+                            <label for="">Color: </label>
+                            <input type="text" name="color" id="color" value="" placeholder="">
+                        </div>
+                        <div>
+                            <label for="">Product Code: </label>
+                            <input type="text" name="product_code" id="product_code" value="">
+                        </div>
+                        <div>
+                            <label for="">Size fit: </label>
+                            <input type="text" name="model_wears" id="model-wears" value="" placeholder="188cm/6'2">
+                            <input type="text" name="model_height" id="model-height" value="" placeholder="Size Medium">
+                        </div>
+                        <div>
+                            <label for="">Main: </label>
+                            <input type="text" name="main" id="address" value="" placeholder="Main: 100% Viscose.">    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-add">
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#add">Add New</button>
+            </div>
+        </form>
+    </main>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure to add new product?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary btn-save-add">Add new</button>
+      </div>
+    </div>
+  </div>
+</div>    
+<script>
+    const btn_save_add = document.querySelector('.btn-save-add');
+    const form_add = document.querySelector('.form-add');
+    btn_save_add.addEventListener('click', (event) => {
+        form_add.submit();
+    })
+</script>       
+</div>
+
+<script>
+    const products = document.querySelector('.products');
+    products.classList.toggle('active');
+</script>

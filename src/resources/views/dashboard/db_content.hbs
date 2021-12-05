@@ -6,31 +6,35 @@
                 </div>
                 <div class="sidebar-menu">
                     <ul>
-                        {{!-- <li>
-                            <a href="" class="active"><span class="las la-igloo"></span>
+                        <li>
+                            <a href="/admin/dashboard" class="dashboard"><span class="las la-igloo"></span>
                             <span>Dashboard</span></a>                     
-                        </li> --}}
-                        <li>
-                            <a href="/admin/user" class="active"><span class="las la-users"></span>
-                            <span>Customers</span></a>
                         </li>
                         <li>
-                            <a href="/admin/staff"><span class="las la-user-tie"></span>
-                            <span>Staffs</span></a>
+                            {{#if users}}
+                                <a href="/admin/users" class="users active"><span class="las la-users"></span>
+                            {{else}}
+                                <a href="/admin/users" class="users"><span class="las la-users"></span>
+                            {{/if}}
+                            <span>Users</span></a>
                         </li>
                         <li>
-                            <a href="/admin/products"><span class="lab la-product-hunt"></span>
+                            {{#if items}}
+                                <a href="/admin/products" class="products active"><span class="lab la-product-hunt"></span>
+                            {{else}}
+                                <a href="/admin/products" class="products"><span class="lab la-product-hunt"></span>
+                            {{/if}}
                             <span>Products</span></a>
                         </li>
                         <li>
-                            <a href="/admin/profile"><span class="las la-user-circle"></span>
+                            <a href="/admin/profile" class="profile"><span class="las la-user-circle"></span>
                             <span>Profile</span></a>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="main-content">
-                <header>
+                {{!-- <header>
                     <h1>
                         <label for="">
                             <span class="las la-bars bars-js"></span>
@@ -50,9 +54,10 @@
                         </div>
                     {{/with}}
                     </div>      
-                </header>
+                </header> --}}
+                {{> admin/db_header}}
                 <main>
-                    <div class="cards">
+                    {{!-- <div class="cards">
                         <div class="cards-single">
                             <div>
                                 <h1>54</h1>
@@ -92,46 +97,57 @@
                                 <span class="lab la-google-wallet"></span>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="recent-grid">
                         <div class="projects">
                             <div class="card">
                                 <div class="card-header">
-                                    <h2>Customers</h2>
-                                    <button>See all <span class="las-la-arrow-right"></span></button>
+                                    {{#if users}} 
+                                    <h2>Users</h2>                                           
+                                        <a href="/admin/users/add"><button type="button" class="btn btn-outline-danger">Add new</button></a>
+                                    {{else}}
+                                        <h2>Products</h2>
+                                        <a href="/admin/products/add"><button type="button" class="btn btn-outline-danger">Add new</button></a>
+                                    {{/if}}                                   
                                 </div>
                                 <div class="card-body">
                                     <table width="100%">
                                     {{#if users}}
                                         <thead>
                                             <tr>
-                                                <td>#</td>
+                                                <td>Avatar</td>
                                                 <td>Full Name</td>
                                                 <td>User Phone</td>
                                                 <td>Address</td>
                                                 <td>Date of birth</td>
-                                                <td>adsas</td>
+                                                <td>Role</td>
+                                                <td>Status</td>
+                                                <td>Action</td>
                                             </tr>
                                         </thead>
                                         <tbody>
                                         {{#each users}}
                                             <tr>
-                                                <td>{{sum @index 1}}</td>
+                                                {{!-- <td>{{sum @index 1}}</td> --}}
+                                                <td><img src="{{this.img}}" alt=""></td>
                                                 <td>{{this.fullname}}</td>
                                                 <td>{{this.userPhone}}</td>
                                                 <td>{{this.address}}</td>
                                                 <td>{{this.date_of_birth}}</td>
-                                                {{!-- <td>{{this.date}}</td> --}}
-                                                {{!-- <td>{{this.updatedAt}}</td> --}}
-                                                {{!-- <td>
-                                                    <div class="status green"></div>
-                                                    in process
-                                                </td> --}}
+                                                <td>{{this.role}}</td>                                            
+                                                <td>
+                                                    {{#if this.status}}
+                                                        <div class="status green"></div>
+                                                        Active
+                                                    {{else}}
+                                                        <div class="status red"></div>
+                                                        Not Active
+                                                    {{/if}}
+                                                </td>
                                                 <td class="user-action">
                                                     <ul>
-                                                        <li><a href="/admin/user/edit/{{this._id}}"><i class="las la-user-edit"></i></a></li>
-                                                        <li><a href=""><i class="las la-trash"></i></a></li>
-                                                        <li><a href=""><i class="las la-save"></i></a></li>
+                                                        <li><a href="/admin/users/edit/{{this._id}}"><i class="las la-user-edit"></i></a></li>
+                                                        <li><a href="javascript:void()" class="action-trash" data-id="{{this._id}}" data-bs-toggle="modal" data-bs-target="#delete-modal"><i class="las la-trash"></i></a></li>                                                      
                                                     </ul>
                                                 </td>
                                             </tr>
@@ -139,7 +155,7 @@
                                         </tbody>
                                     {{else}}
                                         <thead>
-                                            <td>#</td>
+                                            <td>Image</td>
                                             <td>Product code</td>
                                             <td>Price</td>
                                             <td>Color</td>
@@ -150,17 +166,25 @@
                                         <tbody>
                                         {{#each items}}
                                             <tr>
-                                                <td>{{sum @index 1}}</td>
+                                                {{!-- <td>{{sum @index 1}}</td> --}}
+                                                <td><img src="{{this.img}}" alt=""></td>
                                                 <td>{{this.details.product_code}}</td>
                                                 <td>{{this.price}}</td>
                                                 <td>{{this.details.color}}</td>
                                                 <td>{{this.details.quantity}}</td>
-                                                <td>{{this.status}}</td>
+                                                <td>
+                                                    {{#if this.status}}
+                                                        <div class="status green"></div>
+                                                        Active
+                                                    {{else}}
+                                                        <div class="status red"></div>
+                                                        Not Active
+                                                    {{/if}}
+                                                </td>
                                                 <td class="user-action">
                                                     <ul>
                                                         <li><a href="/admin/products/edit/{{this.details.product_code}}"><i class="las la-user-edit"></i></a></li>
-                                                        <li><a href=""><i class="las la-trash"></i></a></li>
-                                                        <li><a href=""><i class="las la-save"></i></a></li>
+                                                        <li><a href="javascript:void()" class="action-trash" data-products="products" data-id="{{this._id}}" data-bs-toggle="modal" data-bs-target="#delete-modal"><i class="las la-trash"></i></a></li>
                                                     </ul>
                                                 </td>
                                             </tr>
@@ -178,3 +202,43 @@
                 </main>
             </div>   
         </div>
+        <form method="POST" name="delete-form"></form>
+<!-- Modal -->
+<div class="modal fade" id="delete-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure to delete?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger btn-save-delete">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>    
+        <script>
+                const delete_modal = document.getElementById('delete-modal');
+                 var id;
+                delete_modal.addEventListener('show.bs.modal', event => {
+                    // Button that triggered the modal
+                    const button = event.relatedTarget;
+                    id = button.getAttribute('data-id');
+                });
+
+                const delete_form = document.forms['delete-form'];
+                const btn_save_delete = document.querySelector('.btn-save-delete');
+                const action_trash = document.querySelector('.action-trash');
+                btn_save_delete.addEventListener('click', (event) => {
+                    const products = action_trash.getAttribute('data-products'); 
+                    if(products)
+                        delete_form.action = `/admin/products/delete/${id}?_method=DELETE`;
+                    else
+                        delete_form.action = `/admin/users/delete/${id}?_method=DELETE`;
+                    delete_form.submit();
+            });
+        </script>

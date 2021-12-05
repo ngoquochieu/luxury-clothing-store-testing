@@ -1,0 +1,80 @@
+            {{> admin/db_sidebar}}
+            <div class="main-content">
+                {{> admin/db_header}}
+                <main style="background-color: #f1f5f9;">
+                    <form action="/admin/users/{{user._id}}?_method=PUT" enctype="multipart/form-data" class="form-update"  method="POST">
+                        <div id="edit-user">
+                            <div class="edit-img">
+                                <img src="{{user.img}}" alt="" width="460px" height="460px">
+                                <div class="mb-3">
+                                    {{!-- <label for="formFileMultiple" class="form-label">Multiple files input example</label> --}}
+                                    <input class="form-control " type="file" id="formFileMultiple" multiple name="avatar">
+                                </div>
+                            </div>
+                            <div class="edit-info">
+                                <div class="main-content-user">
+                                    <div>
+                                        <label for="">Full name: </label>
+                                        <input type="text" name="fullname" id="fullname" value="{{user.fullname}}">
+                                    </div>
+                                    <div>
+                                        <label for="">UserPhone: </label>
+                                        <input type="text" name="userPhone" id="userPhone" value="{{user.userPhone}}">
+                                    </div>
+                                    <div>
+                                        <label for="">Address: </label>
+                                        <input type="text" name="address" id="address" value="{{user.address}}">    
+                                    </div>
+                                    <div>
+                                        <label for="">Date of birth: </label>
+                                        <input type="text" name="date_of_birth" id="date_of_birth" value="{{user.date_of_birth}}">
+                                    </div>
+                                    <div>
+                                        <label for="">Role: </label>
+                                        <select name="role" id="role" data-role="{{user.role}}">
+                                            <option value="staff">Staff</option>
+                                            <option value="user">User</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-update">
+                            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#update">Update</button>
+                        </div>
+                    </form>
+                </main>
+            </div>
+<!-- Modal -->
+<div class="modal fade" id="update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure to update?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary btn-save-update">Save updates</button>
+      </div>
+    </div>
+  </div>
+</div>    
+<script>
+    const btn_save_update = document.querySelector('.btn-save-update');
+    const form_update = document.querySelector('.form-update');
+    btn_save_update.addEventListener('click', (event) => {
+        form_update.submit();
+    })
+</script>
+<script>
+    const role = document.querySelector('#role');
+    const isRole = role.getAttribute('data-role');
+    const users = document.querySelector('.users');
+
+    users.classList.toggle('active');
+    role.value = isRole;
+</script>       
