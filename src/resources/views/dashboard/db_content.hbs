@@ -98,6 +98,16 @@
                             </div>
                         </div>
                     </div> --}}
+                    {{#if deleted}}
+                        <div class="alert alert-success">
+                            <strong>Success!</strong> deleted
+                        </div>
+                    {{/if}}
+                    {{#if add}}
+                        <div class="alert alert-success">
+                            <strong>Success!</strong> add new
+                        </div>
+                    {{/if}}
                     <div class="recent-grid">
                         <div class="projects">
                             <div class="card">

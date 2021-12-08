@@ -2,6 +2,11 @@
             <div class="main-content">
                 {{> admin/db_header}}
                 <main style="background-color: #f1f5f9;">
+                    {{#if update}}
+                        <div class="alert alert-success">
+                            <strong>Success!</strong> updates
+                        </div>
+                    {{/if}}
                     <form action="/admin/users/{{user._id}}?_method=PUT" enctype="multipart/form-data" class="form-update"  method="POST">
                         <div id="edit-user">
                             <div class="edit-img">
