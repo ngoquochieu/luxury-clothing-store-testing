@@ -13,15 +13,12 @@ const app = express();
 const db = require('./config/db/index');
 const port = 3001;
 
-// app.use(logger('dev'));
+app.use(logger('dev'));
 //Connect db
 db.connect();
+
 app.use(express.json());
-app.use(
-    express.urlencoded({
-        extended: true,
-    }),
-);
+app.use(express.urlencoded({extended: true,}),);
 
 // Cookie-parser
 app.use(cookieParser());
