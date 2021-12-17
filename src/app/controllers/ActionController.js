@@ -1,4 +1,6 @@
 const User = require('../../app/models/users');
+const Cart = require('../../app/models/carts');
+
 const bcrypt = require('bcryptjs');
 class ActionController {
     //[GET] '/action/login
@@ -43,6 +45,12 @@ class ActionController {
             img:'/img/user/test.jpg',
             role:'user',
         })
+
+        const cart = await new Cart();
+        cart.owner = user;
+        user.cart = cart;
+        
+        await cart.save();
         await user.save();
         res.redirect('/action/login');
     }
