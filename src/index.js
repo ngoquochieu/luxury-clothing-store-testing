@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const logger = require('morgan');
 const handlebars = require('express-handlebars');
@@ -8,7 +9,7 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const path = require('path');
 const route = require('./routers');
 const passport = require('passport');
-const  flash = require('connect-flash');
+
 const app = express();
 const db = require('./config/db/index');
 const port = 3001;
@@ -36,7 +37,6 @@ app.use(session({
     store: store,
 }))
 
-app.use(flash());
 app.use(passport.initialize())
 app.use(passport.session());
 
