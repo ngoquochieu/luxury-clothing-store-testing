@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 async function connect() {
     try {
-        await mongoose.connect('mongodb://localhost:27017/clothing_store_dev');
+        await mongoose.connect(process.env.DATABASE);
     } catch (error) {
         console.log(error);
     }

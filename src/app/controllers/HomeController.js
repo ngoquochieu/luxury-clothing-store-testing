@@ -3,6 +3,9 @@ const Items = require('../models/items');
 const { multipleMongooseToObject } = require('../../util/mongoose');
 class HomeController {
     index(req, res, next) {
+        
+        req.session.userid={name:"quochieu"};
+        console.log(req.session.userid)
         // req.session.isAuth = true;
         const { user } = req.cookies; 
         Items

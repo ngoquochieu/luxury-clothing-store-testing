@@ -6,7 +6,7 @@ const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
-const path = require('path');
+const path = require('path'); 
 const route = require('./routers');
 const passport = require('passport');
 
@@ -30,10 +30,15 @@ var store = new MongoDBStore({
     collection: 'mySessions'
   });
 // Session
+
 app.use(session({
     secret:'Quoc Hieu',
     resave:false,
-    saveUninitialized:false,
+    saveUninitialized:true,
+    cookie: { 
+        secure: false,
+        httpOnly: true,
+    },
     store: store,
 }))
 

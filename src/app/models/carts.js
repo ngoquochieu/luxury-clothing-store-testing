@@ -1,11 +1,22 @@
 const mongoose = require('mongoose');
-const ObjectId = Schema.ObjectId;
+
 const { Schema } = mongoose;
 
 const Carts = new Schema({
-    _id: ObjectId,
-    UserID: String,
-    items: Array,
-});
+    total: {
+        type: Number,
+    },
 
-module.exports = mongoose.model('Carts', Carts);
+    items: [{
+        type: Schema.Types.ObjectId,
+        ref:'Items',
+    }],
+
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref:'Users',
+   }
+   
+});
+module.exports =  mongoose.model('Carts', Carts);
+

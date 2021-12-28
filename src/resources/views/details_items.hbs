@@ -1,5 +1,6 @@
 {{> header}}
 <div class="container-details container-details-js">
+    <form action="/items/shirts/details/{{item.details.product_code}}" method="POST">
     <div class="container-head">
         <div class="details-img">
             <div class="sub-img">
@@ -29,7 +30,7 @@
                         <select name="sizes" id="sizes" class="full-width" required>
                             <option value="" disabled selected> Please select</option>
                         {{#each item.details.size}}
-                            <option value="">{{this}}</option>
+                            <option value="{{this}}">{{this}}</option>
                         {{/each}}
                         </select>
                     </div>               
@@ -44,6 +45,7 @@
                 </div>
         </div>
     </div>
+    </form>
     <div class="container-foo">
             <div class="product-code col">
                 <h2 class="css-container-foo-h2 upper-text">product code</h2>

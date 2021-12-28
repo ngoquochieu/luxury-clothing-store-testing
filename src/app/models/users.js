@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
+
+const bcrypt = require('bcryptjs');
+
 const { Schema } = mongoose;
-const ObjectId = Schema.ObjectId;
 
 const Users = new Schema({
     userPhone: {
@@ -27,8 +29,36 @@ const Users = new Schema({
     role: {
         type:String,
     },
-    createAt: { type: Date, default: Date.now },
-    updateAt: { type: Date, default: Date.now },
+    status: {
+        type:Boolean,
+    },
+    cart: {
+        type: Schema.Types.ObjectId,
+        ref:'Carts',
+    }
+    }, {
+        timestamps:true,
 });
+
+Users.pre('save', async function(next) {
+    try {
+        const salt = bcrypt.genSalt(10);
+
+        const newPassword = bcrypt.hash(this.password, salt);
+        this.password = newPassword;
+    
+        next();
+    } catch (error) {
+        next(error);
+    }
+});
+
+Users.methods.isValidPassword = async function(newPassword) {
+    try {
+        return await bcrypt.compare(newPassword, this.password);
+    } catch (error) {
+        throw new Error;
+    }
+}
 
 module.exports = mongoose.model('Users', Users);

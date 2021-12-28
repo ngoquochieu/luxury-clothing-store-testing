@@ -1,9 +1,15 @@
 const express = require('express');
-const router = express.Router();
+const router = require('express-promise-router')();
+
+const author = require('../app/middleware/Author');
 
 const itemsController = require('../app/controllers/ItemsController');
 
-router.get('/:type/details/:product_code', itemsController.detailsItems);
-router.get('/:type', itemsController.showItemsOfCate);
+router.route('/:type/details/:product_code')
+    .get( itemsController.detailsItems)
+    .post(itemsController.addToCarts)
+    
+router.route('/:type')
+    .get(itemsController.showItemsOfCate);
 
 module.exports = router;
